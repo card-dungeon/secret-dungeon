@@ -1,0 +1,10 @@
+{
+  "FormattingOptions": {
+    "organizeImports": false,
+    "UseTabs": false,
+    "TabSize": 2,
+    "printWidth": 80,
+    "bracketSpacing": true,
+    "IndentationSize": 4
+  }
+}
