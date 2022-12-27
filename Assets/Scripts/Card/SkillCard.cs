@@ -6,7 +6,7 @@ public class SkillCard : BaseCardProperty
 {
     void Awake()
     {
-        this._cardType = CardType.SKILL;
+
     }
 
     void Update()

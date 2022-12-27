@@ -3,8 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CharacterCard : BaseCardProperty, IPointerClickHandler
+public class CharacterCard : MonoBehaviour
 {
+    [SerializeField]
+    private BaseCardProperty Stat;
+    public BaseCardProperty Property
+    {
+        get { return this.Stat; }
+        set { this.Stat = value; }
+    }
     private Rigidbody _rig;
     private GameObject _equipCard;
     private GameObject _skillCard;
@@ -15,7 +22,6 @@ public class CharacterCard : BaseCardProperty, IPointerClickHandler
 
     void Awake()
     {
-        this._cardType = CardType.CHARACTER;
         this._rig = GetComponent<Rigidbody>();
         // this._rig.useGravity = true;
         // this._rig.freezeRotation = true;
