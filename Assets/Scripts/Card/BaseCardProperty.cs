@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "base card data", menuName = "Scriptable Object/card data")]
@@ -21,10 +19,6 @@ public class BaseCardProperty : ScriptableObject
     private string _name;
     [SerializeField]
     private string _desc;
-    [SerializeField]
-    private int _bhType;
-    [SerializeField]
-    private RangeType _rangeType;
     [SerializeField]
     private CardType _cardType;
 
@@ -68,16 +62,6 @@ public class BaseCardProperty : ScriptableObject
     {
         get { return this._desc; }
         set { this._desc = value; }
-    }
-    public RangeType RangeType
-    {
-        get { return this._rangeType; }
-        set { this._rangeType = value; }
-    }
-    public int BehaviourType
-    {
-        get { return this._bhType; }
-        set { this._bhType = value; }
     }
     public CardType CardType
     {
