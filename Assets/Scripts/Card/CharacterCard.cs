@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 public class CharacterCard : MonoBehaviour
 {
@@ -17,25 +16,19 @@ public class CharacterCard : MonoBehaviour
     private GameObject _skillCard;
     // 상태 이상
     private int _status;
-    private Camera _camera;
     private GameMode _mode;
+    private RaycastHit _hit;
 
     void Awake()
     {
         this._rig = GetComponent<Rigidbody>();
-        // this._rig.useGravity = true;
-        // this._rig.freezeRotation = true;
+
         GameModeChanger.changeGameMode += this._changeGameMode;
     }
 
     void Update()
     {
 
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        Debug.Log(1);
     }
 
     public void SetEquipCard(GameObject _gameObject)
@@ -76,7 +69,7 @@ public class CharacterCard : MonoBehaviour
                 this._rig.useGravity = false;
                 break;
             case GameMode.BATTLE:
-                this._rig.useGravity = true;
+                // this._rig.useGravity = true;
                 break;
             case GameMode.TITLE:
                 this._rig.useGravity = false;
@@ -84,6 +77,29 @@ public class CharacterCard : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    void OnMouseDrag()
+    {
+        float y = transform.position.y;
+        Vector3 position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.position = new Vector3(position.x, y, position.z);
+        // Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        // // Debug.DrawRay(ray.origin, ray.direction * 1000, Color.green);
+
+        // int layerMask = 1 << LayerMask.NameToLayer("Card");
+        // if (Physics.Raycast(ray, out _hit, Mathf.Infinity, layerMask))
+        // {
+        //     float y = _hit.transform.position.y;
+        //     _hit.transform.position = new Vector3(_hit.point.x, y, _hit.point.z);
+        // }
+
+        // layerMask = (1 << LayerMask.NameToLayer("Area")) | (1 << LayerMask.NameToLayer("Ground"));
+        // RaycastHit[] hits = Physics.RaycastAll(ray, Mathf.Infinity, layerMask);
+        // for (int i = 0; i < hits.Length; i++)
+        // {
+        //     RaycastHit hit = hits[i];
+        // }
     }
 
     // GETTER SETTER

@@ -13,6 +13,16 @@ public interface IHeal
     void Heal();
 }
 
+public interface IBuff
+{
+    void Buff();
+}
+
+public interface IDebuff
+{
+    void Debuff();
+}
+
 public interface ICurse
 {
     void Curse();
